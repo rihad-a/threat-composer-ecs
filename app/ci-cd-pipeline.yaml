@@ -1,0 +1,20 @@
+name: Push Docker Image To ECR
+
+description: Pushing an image to docker
+
+inputs:
+  aws_access_key_id:
+    type: string
+    required: true
+  aws_secret_access_key:
+    type: string
+    required: true
+  aws_region:
+    type: string
+    required: true
+  ecr_repository:
+    type: string
+    required: true
+
+runs: 
+  using: ubuntu-latest
