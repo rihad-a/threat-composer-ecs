@@ -27,3 +27,5 @@ jobs:
       run: docker tag 5702e4b11640  ${{ secrets.ECR_REPOSITORY }}:tag
     - name: Docker push
       run: docker push ${{ secrets.ECR_REPOSITORY }}:tag
+    - name: check
+     run: cd
