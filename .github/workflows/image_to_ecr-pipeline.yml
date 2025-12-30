@@ -3,6 +3,8 @@ name: Push Docker Image To ECR.
 description: Pushing an image to docker
 
 on:
+  workflow_dispatch:
+  
   push:
     branches:
       - main
