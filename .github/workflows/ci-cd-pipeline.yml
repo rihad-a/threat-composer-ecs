@@ -13,5 +13,8 @@ jobs:
     steps:
     - name: checkout code
       uses: actions/checkout@v3
+    - name: install aws cli
+      run: apt-get update
+      run: apt-get install awscli
     - name: authenticating dokcer client to ecr repository
       run: aws ecr get-login-password --region ${{ secrets.AWS_REGION }} | docker login --username AWS --password-stdin ${{ secrets.AWS }}
