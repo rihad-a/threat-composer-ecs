@@ -20,8 +20,8 @@ jobs:
     - name: Authenticating Docker client to AWS ECR Registry 
       run: aws ecr get-login-password --region ${{ secrets.AWS_REGION }} | docker login --username AWS --password-stdin ${{ secrets.ECR_REPOSITORY }}
     - name: check 1
-      run: docker build -t threat-composer ./app
+      run: docker build -t ${{ github.sha }} ./app
     - name: Tagging image to ECR repo
-      run: docker tag threat-composer ${{ secrets.ECR_REPOSITORY }}:tag
+      run: docker tag ${{ github.sha }} ${{ secrets.ECR_REPOSITORY }}:tag
     - name: Docker push
       run: docker push ${{ secrets.ECR_REPOSITORY }}:tag
