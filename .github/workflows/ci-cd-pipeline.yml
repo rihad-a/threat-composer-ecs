@@ -17,5 +17,9 @@ jobs:
       run: |
           aws configure set aws_access_key_id ${{ secrets.AWS_ACCESS_KEY_ID }}
           aws configure set aws_secret_access_key ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-    - name:
+    - name: Authenticating Docker client to AWS ECR Registry 
       run: aws ecr get-login-password --region ${{ secrets.AWS_REGION }} | docker login --username AWS --password-stdin ${{ secrets.ECR_REPOSITORY }}
+    - name: Tagging image to ECR repo
+      run: docker tag 5702e4b11640 ${{ secrets.ECR_REPOSITORY }}:tag
+    - name: Docker push
+      run: docker push ${{ secrets.ECR_REPOSITORY }}:tag
