@@ -3,18 +3,19 @@ name: Push Docker Image To ECR
 description: Pushing an image to docker
 
 inputs:
-  aws_access_key_id:
-    type: string
-    required: true
-  aws_secret_access_key:
-    type: string
-    required: true
-  aws_region:
-    type: string
-    required: true
-  ecr_repository:
+  docker_imageid:
     type: string
     required: true
 
-runs: 
-  using: ubuntu-latest
+on: [push]
+  push:
+
+jobs:
+  build:
+    runs on: ubuntu-latest
+    steps:
+    - name: checkout code
+      uses: actions/checkout@v3
+
+    - name: login to docker
+      run: docker login --username ${{ secrets.DOCKER_USER }} --password ${{ secrets.DOCKER_PASS }}
