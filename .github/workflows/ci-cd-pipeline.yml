@@ -14,8 +14,8 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v3
     - name: Add python3
-      run: sudo apk add --no-cache curl jq python3 py3-pip
+      run: apk add --no-cache curl jq python3 py3-pip
     - name: Install awscli
-      run: sudo pip install awscli
+      run: pip install awscli
     - name: Authenticating docker client to ecr repository
       run: aws ecr get-login-password --region ${{ secrets.AWS_REGION }} | docker login --username AWS --password-stdin ${{ secrets.ECR_REPOSITORY }}
