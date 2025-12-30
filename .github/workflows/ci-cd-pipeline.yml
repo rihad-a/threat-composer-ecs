@@ -16,6 +16,6 @@ jobs:
     - name: run apt-get update
       run: sudo apt-get update
     - name: install aws cli
-      run: sudo apt-get install awscli
+      run: sudo snap install aws-cli --classic
     - name: authenticating dokcer client to ecr repository
       run: aws ecr get-login-password --region ${{ secrets.AWS_REGION }} | docker login --username AWS --password-stdin ${{ secrets.AWS }}
