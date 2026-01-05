@@ -22,7 +22,7 @@ jobs:
       - name: configure aws credentials
         uses: aws-actions/configure-aws-credentials@v1.7.0
         with:
-          role-to-assume: <arn:aws:iam::291759414346:role/GitHubActionsTerraformRole>
+          role-to-assume: <291759414346>
           role-session-name: GitHubActionsTerraformRole
           aws-region: ${{ env.AWS_REGION }}
       # Hello from AWS: WhoAmI
