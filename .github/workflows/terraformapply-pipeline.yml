@@ -17,23 +17,18 @@ jobs:
     steps:
       - name: Git clone the repository
         uses: actions/checkout@v3
-
       - name: configure aws credentials
         uses: aws-actions/configure-aws-credentials@v1.7.0
         with:
           role-to-assume: arn:aws:iam::291759414346:role/GitHubActionsTerraformRole
           role-session-name: GitHubActionsTerraformRole
           aws-region: ${{ env.AWS_REGION }}
-
       - name: Running Terraform commands
         uses: hashicorp/setup-terraform@v3
-
       - name: Running a Terraform Init  
         run: terraform -chdir=ecs init
-
       - name: Running a Terraform Plan
-        run: terraform -chdir=ecs plan
-
+        run: terraform -chdir=ecs plan1
       - name: Running a Terraform Apply
         run: terraform -chdir=ecs apply -auto-approve
         
