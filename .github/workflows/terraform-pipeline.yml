@@ -28,7 +28,7 @@ jobs:
       - name: Running a Terraform Init  
         run: terraform -chdir=ecs init
       - name: Running a Terraform Plan
-        run: terraform plan
+        run: terraform -chdir=ecs plan
       - name: Running a Terraform Apply
-        run: terraform apply
+        run: terraform -chdir=ecs apply
 
