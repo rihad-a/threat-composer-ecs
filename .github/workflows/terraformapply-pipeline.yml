@@ -25,6 +25,8 @@ jobs:
           aws-region: ${{ env.AWS_REGION }}
       - name: Running Terraform commands
         uses: hashicorp/setup-terraform@v3
+        with:
+          terraform_version: "1.14.3"
       - name: Running a Terraform Init  
         run: terraform -chdir=ecs init
       - name: Running a Terraform Plan
