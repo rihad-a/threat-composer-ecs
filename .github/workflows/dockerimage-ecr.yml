@@ -6,6 +6,10 @@ on:
 env: 
   AWS_REGION : "eu-west-2"
 
+permissions:
+    id-token: write  
+    contents: read   
+
 jobs:
   DockerImageBuildAndPush:
     runs-on: ubuntu-24.04
