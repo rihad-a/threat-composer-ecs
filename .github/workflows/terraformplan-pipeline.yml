@@ -34,7 +34,7 @@ jobs:
         run: terraform -chdir=ecs init
 
       - name: Running a Terraform Plan
-        run: terraform -chdir=ecs plan
+        run: terraform -chdir=ecs plan -out terraform.plan
 
 
 
