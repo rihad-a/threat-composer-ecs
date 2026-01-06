@@ -37,7 +37,7 @@ jobs:
         uses: actions/download-artifact@v4
         with:
           name: tfplan
-          path: tfplan 
+          path: ./
 
       - name: Running a Terraform Apply
         run: terraform -chdir=ecs apply -auto-approve tfplan
