@@ -17,7 +17,7 @@ resource "aws_ecs_task_definition" "ecs-docker" {
 [
   {
     "name": "threat-composer",
-    "image": "291759414346.dkr.ecr.eu-west-2.amazonaws.com/ecs-project:tag",
+    "image": "291759414346.dkr.ecr.eu-west-2.amazonaws.com/ecs-project:${{ github.sha }}",
     "essential": true,
     "portMappings": [
       {
