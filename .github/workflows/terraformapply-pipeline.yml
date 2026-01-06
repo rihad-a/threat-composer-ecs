@@ -33,9 +33,6 @@ jobs:
       - name: Running a Terraform Init  
         run: terraform -chdir=ecs init
 
-      - name: Fixing statelock error
-        run: terraform force-unlock aa8952d6-9def-d999-73bc-1edab274342e 
-
       - name: Running a Terraform Apply
         run: terraform -chdir=ecs apply -auto-approve
         
