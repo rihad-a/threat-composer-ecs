@@ -12,11 +12,17 @@ permissions:
       id-token: write   # This is required for requesting the JWT
       contents: read    # This is required for actions/checkout
 jobs:
+  compile:
+    uses: ./.github/workflows/terraformplan-pipeline.yml
+  
+
   TerraformApply:
     runs-on: ubuntu-latest
     steps:
       - name: Git clone the repository
         uses: actions/checkout@v3
+        with:
+          submodules: recursive 
 
       - name: Configure AWS credentials
         uses: aws-actions/configure-aws-credentials@v1.7.0
@@ -37,9 +43,11 @@ jobs:
         uses: actions/download-artifact@v4
         with:
           name: tfplan
-          path: ./
+          path: path/to/artifacts
 
       - name: Running a Terraform Apply
-        run: terraform -chdir=ecs apply -auto-approve tfplan
+        run: |
+          cd path/to/artifacts 
+          terraform -chdir=ecs apply -auto-approve tfplan
         
 

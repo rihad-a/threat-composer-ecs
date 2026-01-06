@@ -1,7 +1,13 @@
 name: Running a Terraform Plan
 
 on:
+  workflow_call:
   workflow_dispatch:
+  push:
+    branches:
+      - '**' 
+      - '!main'
+  
 
 env:
   
@@ -40,7 +46,7 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: tfplan
-          path: ./
+          path: path/to/artifacts
 
 
 
