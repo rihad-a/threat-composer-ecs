@@ -45,7 +45,7 @@ jobs:
       - name: Terraform Plan (Checkov)
         run: |
           terraform -chdir=ecs plan -out my-tf.plan
-          terraform show -json my-tf.plan | jq '.' > my-tf.json
+          terraform -chdir=ecs show -json my-tf.plan | jq '.' > my-tf.json
 
       - name: Run Checkov on plan
         uses: bridgecrewio/checkov-action@v12
