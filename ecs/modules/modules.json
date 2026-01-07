@@ -1,1 +1,0 @@
-{"Modules":[{"Key":"","Source":"","Dir":"."},{"Key":"alb","Source":"./modules/alb","Dir":""},{"Key":"aws_vpc","Source":"./modules/vpc","Dir":""},{"Key":"ecs","Source":"./modules/ecs","Dir":""},{"Key":"route53","Source":"./modules/route53","Dir":""}]}
