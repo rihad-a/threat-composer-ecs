@@ -76,7 +76,7 @@ jobs:
           pip install checkov
           terraform -chdir=ecs plan -out my-tf.plan
           terraform -chdir=ecs show -json my-tf.plan | jq '.' > my-tf.json
-          checkov -f --soft-fail my-tf.json --quiet
+          checkov -f my-tf.json --soft-fail
 
 
 
