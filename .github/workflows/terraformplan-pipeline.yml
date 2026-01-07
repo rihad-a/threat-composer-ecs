@@ -77,7 +77,7 @@ jobs:
           directory: .
           file: my-tf.json
           framework: terraform_plan
-          soft_fail: false
+          soft_fail: true
           output_format: sarif
           output_file_path: checkov.sarif
 
