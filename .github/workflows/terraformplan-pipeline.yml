@@ -41,26 +41,16 @@ jobs:
         with:
           name: tfplan
           path: ./
+      
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.14.2'
 
       - name: Terraform Plan (Checkov)
         run: |
+          pip install checkov
           terraform -chdir=ecs plan -out my-tf.plan
           terraform -chdir=ecs show -json my-tf.plan | jq '.' > my-tf.json
-
-      - name: Run Checkov on plan
-        uses: bridgecrewio/checkov-action@v12
-        with:
-          directory: .
-          file: my-tf.json
-          framework: terraform_plan
-          soft_fail: false
-          output_format: sarif
-          output_file_path: checkov.sarif
-
-      - name: Upload SARIF (Checkov)
-        uses: github/codeql-action/upload-sarif@v3
-        with:
-          sarif_file: checkov.sarif       
-
-
+          checkov -f my-tf.json --quiet
 
