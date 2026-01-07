@@ -2,13 +2,13 @@ name: Create and Push Image to ECR
 
 on:
   workflow_dispatch:
+permissions:
+  contents: read
+  pull-requests: write   
+  id-token: write  
 
 env: 
   AWS_REGION : "eu-west-2"
-
-permissions:
-    id-token: write  
-    contents: read   
 
 jobs:
   DockerImageBuildAndPush:
