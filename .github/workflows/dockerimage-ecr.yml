@@ -47,7 +47,9 @@ jobs:
             sarif_file: 'trivy-results.sarif'
 
     - name: Tagging image to ECR repository
-      run: docker tag threat-composer1 ${{ secrets.ECR_REPOSITORY }}:${{ github.sha }} tag threat-composer2 ${{ secrets.ECR_REPOSITORY }}:latest
+      run: |
+        docker tag threat-composer1 ${{ secrets.ECR_REPOSITORY }}:${{ github.sha }}
+        docker tag threat-composer2 ${{ secrets.ECR_REPOSITORY }}:latest
 
     - name: Pushing docker image
       run: docker push ${{ secrets.ECR_REPOSITORY }} --all-tags
