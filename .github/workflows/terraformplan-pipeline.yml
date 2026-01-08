@@ -49,7 +49,7 @@ jobs:
           terraform_version: "1.14.3"
 
       - name: Running a Terraform Init  
-        run: terraform -chdir=ecs init
+        run: terraform -chdir=terraform/deployment init
         
       - name: Terraform Format
         run: terraform fmt
