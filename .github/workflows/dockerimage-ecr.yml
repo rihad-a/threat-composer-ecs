@@ -53,3 +53,5 @@ jobs:
 
     - name: Pushing docker image
       run: docker push ${{ secrets.ECR_REPOSITORY }} --all-tags
+
+      
