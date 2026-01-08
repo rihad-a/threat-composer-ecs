@@ -30,12 +30,12 @@ jobs:
       run: aws ecr get-login-password --region ${{ secrets.AWS_REGION }} | docker login --username AWS --password-stdin ${{ secrets.ECR_REPOSITORY }}
 
     - name: Building docker image
-      run: docker build -t threat-composer ./app
+      run: docker build -t threat-composer1 -t threat-composer2 ./app
 
     - name: Run Trivy vulnerability scan
       uses: aquasecurity/trivy-action@0.30.0
       with:
-          image-ref: 'threat-composer'
+          image-ref: 'threat-composer1'
           format: 'sarif'
           exit-code: 0
           severity: 'CRITICAL,HIGH'
@@ -47,7 +47,7 @@ jobs:
             sarif_file: 'trivy-results.sarif'
 
     - name: Tagging image to ECR repository
-      run: docker tag threat-composer ${{ secrets.ECR_REPOSITORY }}:${{ github.sha }}
+      run: docker tag threat-composer1 ${{ secrets.ECR_REPOSITORY }}:${{ github.sha }} tag threat-composer2 ${{ secrets.ECR_REPOSITORY }}:latest
 
     - name: Pushing docker image
-      run: docker push ${{ secrets.ECR_REPOSITORY }}:${{ github.sha }}
+      run: docker push ${{ secrets.ECR_REPOSITORY }} --all-tags
