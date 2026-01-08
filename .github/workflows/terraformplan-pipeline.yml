@@ -58,7 +58,7 @@ jobs:
         run: tflint 
 
       - name: Running a Terraform Plan
-        run: terraform -chdir=ecs plan -out=tfplan
+        run: terraform -chdir=ecs plan -out=tfplan -input=false
       
       - name: Uploading Terraform Plan
         uses: actions/upload-artifact@v4
