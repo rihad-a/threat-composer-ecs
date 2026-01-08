@@ -1,29 +1,3 @@
-# --- General ---
-
-variable "domain_name" {
-  type        = string
-  description = "The domain name for the infrastructure"
-}
-
-# --- ALB_TG VARIABLES ---
-
-variable "albtg-port" {
-  type        = number
-  description = "The port for the target group"
-}
-
-# --- ALB ---
-
-variable "alb-port-1" {
-  type        = number
-  description = "The port for the first listener (HTTPS)"
-}
-
-variable "alb-port-2" {
-  type        = number
-  description = "The port for the second listener (HTTP)"
-}
-
 # --- aws vpc ---
 
 variable "vpc-cidr" {
@@ -74,31 +48,4 @@ variable "subnet-map_public_ip_on_launch_public" {
 variable "subnet-map_public_ip_on_launch_private" {
   type        = bool
   description = "Boolean to map public IP on launch for private subnets"
-}
-
-# --- ecs creation ---
-
-variable "ecs-container-name" {
-  type        = string
-  description = "The name of the container in the task definition"
-}
-
-variable "ecs-containerport" {
-  type        = number
-  description = "The port the container listens on"
-}
-
-variable "ecstg-port" {
-  type        = number
-  description = "The port for the target group"
-}
-
-variable "ecs-port-1" {
-  type        = number
-  description = "The port for the first listener (HTTPS)"
-}
-
-variable "ecs-port-2" {
-  type        = number
-  description = "The port for the second listener (HTTP)"
 }

@@ -3,19 +3,6 @@ data "aws_route53_zone" "selected" {
   private_zone = false
 }
 
-resource "aws_route53_record" "www" {
-  zone_id = data.aws_route53_zone.selected.zone_id
-  name    = data.aws_route53_zone.selected.name
-  type    = "A"
-
-  alias {
-    name                  = aws_lb.terraform-alb.dns_name
-    zone_id               = aws_lb.terraform-alb.zone_id
-    evaluate_target_health = true
-  }
-
-}
-
 resource "aws_acm_certificate" "cert" {
   domain_name       = var.domain_name
   validation_method = "DNS"
@@ -27,4 +14,18 @@ resource "aws_acm_certificate" "cert" {
   lifecycle {
     create_before_destroy = true
   }
+}
+
+
+resource "aws_route53_record" "www" {
+  zone_id = data.aws_route53_zone.selected.zone_id
+  name    = data.aws_route53_zone.selected.name
+  type    = "A"
+
+  alias {
+    name                  = var.alb_dns
+    zone_id               = var.alb_zoneid
+    evaluate_target_health = true
+  }
+
 }

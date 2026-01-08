@@ -1,9 +1,7 @@
 module "aws_vpc" {
   source = "./modules/vpc"
 
-
-
-vpc-cidr                                 = var.vip-cidr
+vpc-cidr                                 = var.vpc-cidr
 subnet-cidrblock-pub1                    = var.subnet-cidrblock-pub1
 subnet-cidrblock-pub2                    = var.subnet-cidrblock-pub2
 subnet-cidrblock-pri1                    = var.subnet-cidrblock-pri1
@@ -25,10 +23,10 @@ alb-port-1                               = var.alb-port-1
 alb-port-2                               = var.alb-port-2
 
   # Use these outputs
-  vpc_id            = module.aws_vpc.aws_vpc.terraform_vpc.id
-  subnetpub1_id     = module.aws_vpc.aws_subnet.public_1.id
-  subnetpub2_id     = module.aws_vpc.aws_subnet.public_2.id
-  certificate_arn   = module.route53.aws_acm_certificate.cert.arn
+  vpc_id            = module.aws_vpc.vpc-id
+  subnetpub1_id     = module.aws_vpc.subnet-pub1
+  subnetpub2_id     = module.aws_vpc.subnet-pub2
+  certificate_arn   = module.route53.certificate_arn
 }
 
 module "ecs" {
@@ -41,9 +39,9 @@ ecs-port-1                               = var.ecs-port-1
 ecs-port-2                               = var.ecs-port-2  
 
   # Use these outputs
-  tg_arn            = module.alb.aws_lb_target_group.alb-tg.arn
-  subnetpri1_id     = module.aws_vpc.aws_subnet.private_1.id
-  vpc_id            = module.aws_vpc.aws_vpc.terraform_vpc.id
+  tg_arn            = module.alb.tg_arn
+  subnetpri1_id     = module.aws_vpc.subnet-pri1
+  vpc_id            = module.aws_vpc.vpc-id
 }
 
 module "route53" {
@@ -52,6 +50,6 @@ module "route53" {
 domain_name                              = var.domain_name
 
   # Use these outputs
-  alb_dns           = module.alb.aws_lb.terraform-alb.dns_name
-  alb_zoneid        = module.alb.aws_lb.terraform-alb.zone_id
+  alb_dns           = module.alb.alb_dns
+  alb_zoneid        = module.alb.alb_zoneid
 }
