@@ -35,9 +35,6 @@ jobs:
         with:
          tflint_version: latest
       
-      - name: Show version
-        run: tflint --version
-    
       - name: Init TFLint
         run: tflint --init
         env:
@@ -54,17 +51,8 @@ jobs:
       - name: Terraform Format
         run: terraform fmt
     
-      - name: Terraform lint
+      - name: Terraform Lint
         run: tflint 
-
-      - name: Running a Terraform Plan
-        run: terraform -chdir=terraform/deployment plan -out=tfplan -input=false
-      
-      - name: Uploading Terraform Plan
-        uses: actions/upload-artifact@v4
-        with:
-          name: tfplan
-          path: ./
 
       - name: Set up Python
         uses: actions/setup-python@v5
@@ -76,7 +64,18 @@ jobs:
           pip install checkov
           terraform -chdir=terraform/deployment plan -out my-tf.plan
           terraform -chdir=terraform/deployment show -json my-tf.plan | jq '.' > my-tf.json
-          checkov -f my-tf.json --soft-fail
+          checkov -f my-tf.json --soft-fail 
+
+      - name: Running a Terraform Plan
+        run: terraform -chdir=terraform/deployment plan -out=tfplan -input=false
+      
+      - name: Uploading Terraform Plan
+        uses: actions/upload-artifact@v4
+        with:
+          name: tfplan
+          path: ./
+
+
 
 
 
