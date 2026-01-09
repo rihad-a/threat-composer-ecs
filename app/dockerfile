@@ -12,6 +12,10 @@ RUN yarn build
 
 FROM node:25-alpine AS production
 
+RUN useradd -u 2288 rihad
+
+USER rihad
+
 WORKDIR /app
 
 COPY --from=builder /app/build ./build
