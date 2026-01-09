@@ -6,11 +6,6 @@ resource "aws_lb" "terraform-alb" {
   load_balancer_type = "application"
   security_groups    = [aws_security_group.sg1.id]
   subnets           = [var.subnetpub1_id, var.subnetpub2_id]
-
-  tags = {
-    Name = "terraform-alb"
-    Environment = "production"
-  }
 }
 
 # Creating the ALB listeners
