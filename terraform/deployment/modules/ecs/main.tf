@@ -43,7 +43,7 @@ resource "aws_ecs_service" "ecs-project" {
   name            = "ecs-project"
   cluster         = aws_ecs_cluster.ecs-project.id
   task_definition = aws_ecs_task_definition.ecs-docker.arn
-  desired_count   = var.ecs-desiredcount
+  desired_count   = 2
   launch_type = "FARGATE"
 
   load_balancer {
