@@ -10,17 +10,17 @@ COPY . .
 
 RUN yarn build
 
-FROM node:25-alpine AS production
+FROM node@sha256:4b737db88848e949e50429a242d7010f6ef282b2178935a9f21dad805dae504b AS production
 
-RUN useradd -u 2288 rihad
-
-USER rihad
+RUN adduser -u 1001 -D rihad
 
 WORKDIR /app
 
 COPY --from=builder /app/build ./build
 
 RUN yarn global add serve
+
+USER rihad
 
 EXPOSE 3000
 
