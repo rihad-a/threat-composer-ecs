@@ -10,7 +10,7 @@ COPY . .
 
 RUN yarn build
 
-FROM node@sha256:4b737db88848e949e50429a242d7010f6ef282b2178935a9f21dad805dae504b AS production
+FROM node@sha256:f4769ca6eeb6ebbd15eb9c8233afed856e437b75f486f7fccaa81d7c8ad56007 AS production
 
 RUN adduser -u 1001 -D rihad
 
