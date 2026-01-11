@@ -32,7 +32,7 @@ jobs:
           aws-region: ${{ env.AWS_REGION }}
 
     - name: Authenticating docker client to Amazon ECR registry 
-      run: aws ecr get-login-password --region ${{ secrets.AWS_REGION }} | docker login --username AWS --password-stdin ${{ secrets.ECR_REPOSITORY }} 
+      run: aws ecr get-login-password --region ${{ env.AWS_REGION }} | docker login --username AWS --password-stdin ${{ secrets.ECR_REPOSITORY }} 
 
     - name: Building docker image
       run: docker build -t threat-composer1 -t threat-composer2 ./app
