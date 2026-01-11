@@ -31,13 +31,18 @@ output "ns" {
 
 ## Linkage Of Route53 Hosted Zone NS' to Cloudflare
 
+
+data "cloudflare_zone" "domain_zone" {
+  zone_id = "415c05da9144abf5a32a57c25dfefe06"
+}
+
  resource "cloudflare_dns_record" "route53-ns" {
   name    = "networking"
   count   = "${length(aws_route53_zone.networking.name_servers)}"
   ttl     = 300
   type    = "NS"
   content   = "${element(aws_route53_zone.networking.name_servers, count.index)}"
-  zone_id = "415c05da9144abf5a32a57c25dfefe06"
+  zone_id = data.cloudflare_zone.domain_zone.zone_id
 }
 
 # ECR Repo Creation
