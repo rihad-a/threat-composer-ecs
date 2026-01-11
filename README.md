@@ -21,23 +21,11 @@ The architecture comprises the following AWS services working together to provid
 
 ## Key Components:
 
-- **Dockerisation**: The application is containerised using a **multi-stage Dockerfile** for optimised production builds and reduced image size.
+- **Dockerisation**: Multi-stage Docker build for optimised production builds and reduced image size.
 
-- **Infrastructure as Code (IaC)**: Terraform provisions the following AWS resources:
-    - **ECS Fargate** for serverless container orchestration without server management.
-    - **Application Load Balancer (ALB)** for routing HTTPS/HTTP traffic to the containerised application.
-    - **Route 53** for custom domain name mapping and DNS management.
-    - **Security Groups** to control inbound and outbound network access.
-    - **VPC, Public Subnets, and Private Subnets** to establish secure network architecture with proper isolation.
-    - **Internet Gateway** to enable internet connectivity for the public subnets.
+- **Infrastructure as Code (IaC)**: Terraform provisions AWS resources for the bootstrap and deployment
 
-- **CI/CD Pipeline**: GitHub Actions automate:
-    - **Building and pushing the Docker image** to **Amazon ECR** for secure image storage.
-    - **Planning Terraform configuration** to preview AWS infrastructure changes.
-    - **Applying Terraform** to deploy or update AWS infrastructure in production.
-    - **Performing security scans** with **Trivy** to ensure container image security.
-    - **Destroying Terraform resources** when necessary for cost optimisation.
-    - **Testing OIDC authentication** to ensure secure GitHub Actions-to-AWS credential exchange.
+- **CI/CD Pipeline**: GitHub Actions automate Docker image building, Terraform planning and deployment.
 
 <br>
 
@@ -137,7 +125,7 @@ The deployment process is fully automated via GitHub Actions:
     - Provisions the necessary AWS resources
 
 4. **Terraform Destroy** (`terraformdestroy-pipeline.yml`):
-    - Destroys all Terraform-managed resources when necessary
+    - Destroys all Terraform-managed resources
 
 To trigger any of these workflows, go to **GitHub Actions** and manually run the desired workflow.
 
@@ -190,17 +178,3 @@ Once deployed:
 - **Health Check**: Application exposes health check endpoint at `/health`
 
 <br>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
