@@ -8,14 +8,7 @@ The **Threat Composer Application** is a containerised React TypeScript applicat
 
 ## Architecture Diagram
 
-The architecture comprises the following AWS services working together to provide a highly available, scalable threat modelling platform:
-
-- **ECS Fargate** for serverless container orchestration
-- **Application Load Balancer (ALB)** for routing HTTPS traffic
-- **Route 53** for custom domain name management and DNS
-- **Security Groups** for network access control
-- **VPC with public and private subnets** for network isolation
-- **ECR (Elastic Container Registry)** for container image storage
+![AD](https://raw.githubusercontent.com/Rihad-A/threat-composer-ecs/main/images/Architecture.png)
 
 <br>
 
@@ -178,3 +171,28 @@ Once deployed:
 - **Health Check**: Application exposes health check endpoint at `/health`
 
 <br>
+
+|Here's a picture of the working application:|
+|-------|
+| ![Threat Composer App](https://raw.githubusercontent.com/Rihad-A/threat-composer-ecs/main/images/Threat-Composer-App.png) |
+
+|The SSL Certificate:|
+|-------|
+| ![SSL Certificate](https://raw.githubusercontent.com/Rihad-A/threat-composer-ecs/main/images/SSL-Certificate-1.png) |
+
+|Docker Image Pipeline:|
+|-------|
+| ![Docker Image Pipeline](https://raw.githubusercontent.com/Rihad-A/threat-composer-ecs/main/images/Docker-Image-Pipeline.png) |
+
+|Terraform Plan Pipeline:|
+|-------|
+| ![Terraform Plan Pipeline](https://raw.githubusercontent.com/Rihad-A/threat-composer-ecs/main/images/Terraform-Plan-Pipeline.png) |
+
+|Terraform Apply Pipeline:|
+|-------|
+| ![Terraform Apply Pipeline](https://raw.githubusercontent.com/Rihad-A/threat-composer-ecs/main/images/Terraform-Apply-Pipeline.png) |
+
+|Terraform Destroy Pipeline:|
+|-------|
+| ![Terraform Destroy Pipeline](https://raw.githubusercontent.com/Rihad-A/threat-composer-ecs/main/images/Terraform-Destroy-Pipeline.png) |
+
