@@ -1,4 +1,4 @@
-# --- General Variables ---
+# General Variables
 
 variable "domain_name" {
   type        = string
@@ -15,7 +15,7 @@ variable "aws_tags" {
   type        = map(string)
 }
 
-# --- AWS VPC Variables ---
+# AWS VPC Variables
 
 variable "vpc-cidr" {
   type        = string
@@ -67,7 +67,7 @@ variable "subnet-map_public_ip_on_launch_private" {
   description = "Boolean to map public IP on launch for private subnets"
 }
 
-# --- ECS Variables ---
+# ECS Variables
 
 variable "ecs-container-name" {
   type        = string
