@@ -1,11 +1,11 @@
-# --- General Variables ---
+# General Variables 
 
 variable "application-port" {
   type        = number
   description = "The port for the application"
 }
 
-# --- ECS Variables ---
+# ECS Variables
 
 variable "ecs-container-name" {
   type        = string
@@ -37,7 +37,7 @@ variable "ecs-desiredcount" {
   description = "The number of instances for the task definition to be deployed"
 }
 
-# --- Module Variables ---
+# Module Variables 
 
 variable "tg_arn" {
   type        = string

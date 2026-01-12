@@ -1,11 +1,11 @@
-# --- General Variables ---
+# General Variables 
 
 variable "domain_name" {
   type        = string
   description = "The domain name for the infrastructure"
 }
 
-# --- Module Variables ---
+# Module Variables 
 
 variable "alb_dns" {
   type        = string

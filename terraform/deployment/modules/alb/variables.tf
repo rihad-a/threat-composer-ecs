@@ -1,11 +1,11 @@
-# --- General Variables ---
+# General Variables
 
 variable "application-port" {
   type        = number
   description = "The port for the application"
 }
 
-# --- Module Variables ---
+# Module Variables 
 
 variable "vpc_id" {
   type        = string
